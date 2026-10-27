@@ -1,0 +1,23 @@
+[Unit]
+Description=Crypto Crime Radar — price-spike detector + paper journal
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=radar
+WorkingDirectory=/opt/crypto-crime-radar
+Environment=PYTHONUNBUFFERED=1
+ExecStart=/usr/bin/python3 -m radar
+Restart=always
+RestartSec=5
+MemoryMax=400M
+# Secrets are read from .env / proxy.env (mode 600) in WorkingDirectory.
+# They are never passed via Environment= lines or command-line args.
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/opt/crypto-crime-radar
+
+[Install]
+WantedBy=multi-user.target

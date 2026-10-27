@@ -1,0 +1,16 @@
+# Secrets and runtime artifacts — never committed.
+.env
+proxy.env
+*.sqlite3
+journal.csv
+outcomes.csv
+state/
+
+# Python bytecode / caches.
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Local virtualenvs.
+.venv/
+venv/
